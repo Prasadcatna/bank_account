@@ -10,7 +10,7 @@ int main(){
 	Account* acc;
 	while(true){
 		char ch;
-		std::cout<<"Enter 'B' for Banker or 'C' for Customer: ";
+		std::cout<<"Enter 'B' for Banker \n 'C' for Customer \n 'b' for Balance Enq ";
 		std::cin>>ch;
 	
 		if(ch == 'B'){
@@ -18,12 +18,18 @@ int main(){
 			std::cin>>ch;
 			if(ch == 's'){
 				acc = new Saving();
-				//savi.write((char*)&acc,sizeof(Saving));
-				//savi.close();
+				acc->setAccTypeS();
+				std::cout<<"Account Created Succefully!!\n";
+				std::cout<<"-----------------------------\n";
+				acc->getAcc();
+				std::cout<<"-----------------------------\n";
 			}else if(ch == 'c'){
 				acc = new Current();
-				//curr.write((char*)&acc,sizeof(Current));
-				//curr.close();
+				acc->setAccTypeC();
+				std::cout<<"Account Created Succefully!!\n";
+				std::cout<<"-----------------------------\n";
+				acc->getAcc();
+				std::cout<<"-----------------------------\n";
 			}
 		
 		}else if(ch == 'C'){
@@ -33,25 +39,55 @@ int main(){
 				int acNo;
 				std::cout<<"Enter your Account no.: ";
 				std::cin>>acNo;
-				//Saving sa;
-				savi.seekg(0);
-				int n=0;
-				while(true){
-					if(savi.good()){
-						n++;
-						savi.read((char*)&acc, sizeof(Saving));
-						
-						if(acNo == acc->getAccno()){
-							//savi.seekg(sizeof(Saving)*n, std::ios::beg);
-							//savi.write((char*)&acc, sizeof(Saving));
-							//savi.close();
-							std::
-						}
+				if(acNo == acc->getAccno()){
+					std::cout<<"Enter 'd' for Deposit 'w' for withdraw: ";
+					std::cin>>ch;
+					if(ch == 'd'){
+						acc->balanceEnq();
+						acc->deposit();
+						acc->balanceEnq();
+						std::cout<<"-----------------------------\n";
+					}else if(ch == 'w'){
+						acc->balanceEnq();
+						acc->withdraw();
+						std::cout<<"Withdraw Successfully!!\n";
+						acc->balanceEnq();
+						std::cout<<"-----------------------------\n";
+					}
+				}
+			}else if(ch == 'c'){
+				int acNo;
+				std::cout<<"Enter your Account no.: ";
+				std::cin>>acNo;
+				if(acNo == acc->getAccno()){
+					std::cout<<"Enter 'd' for Deposit 'w' for withdraw: ";
+					std::cin>>ch;
+					if(ch == 'd'){
+						acc->balanceEnq();
+						acc->deposit();
+						acc->balanceEnq();
+						std::cout<<"-----------------------------\n";
+					}else if(ch == 'w'){
+						acc->balanceEnq();
+						acc->withdraw();
+						std::cout<<"Withdraw Successfully!!\n";
+						acc->balanceEnq();
+						std::cout<<"-----------------------------\n";
 					}
 				}
 			}
+		}else if(ch == 'b'){
+			int acNo;
+			std::cout<<"Enter your Account no.: ";
+			std::cin>>acNo;
+			
+			if(acNo == acc->getAccno()){
+				acc->balanceEnq();
+			}else{
+				std::cout<<"There is no account with this Account number: '"<<acNo<<"'\n";
+			}
 		}
-	}
+	}//while ends
 	delete acc;
 	return 0;
 }
