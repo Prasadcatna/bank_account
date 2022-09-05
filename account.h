@@ -4,11 +4,16 @@
 class Account{
 	int accNo;
 	char accName[25];
-	double balance;
 	double depoAmt;
+	protected:
+	double balance;
+	char accType[25];
 	public:
 	Account();
+	void setAccTypeS();
+	void setAccTypeC();
 	int getAccno();
+	int getBalance();
 	void getAcc();
 	void balanceEnq();
 	void deposit();
