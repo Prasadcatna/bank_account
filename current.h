@@ -1,7 +1,7 @@
 #include "account.h"
 
 class Current : public Account{
-	int od_limit;
+	double od_limit;
 	public:
 	Current();
 	//~Current();
