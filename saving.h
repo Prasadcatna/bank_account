@@ -1,7 +1,7 @@
 #include "account.h"
 
 class Saving : public Account{
-	int minBal;
+	double minBal;
 	public:
 	Saving();
 	//~Saving();
