@@ -1,10 +1,11 @@
 #include<iostream>
+#include<cstring>
 #include "account.h"
 
 Account :: Account(){
 	std::cout<<"Enter Account No.: ";
 	std::cin>>accNo;
-	std::cout<<"Enter Account Name: ";
+	std::cout<<"Enter Account Holder Name: ";
 	std::cin>>accName;
 	std::cout<<"Enter Balance: ";
 	std::cin>>balance;
@@ -12,8 +13,11 @@ Account :: Account(){
 }
 
 int Account :: getAccno(){
-	std::cout<<"Hello";
 	return accNo;
+}
+
+int Account :: getBalance(){
+	return balance;
 }
 
 void Account :: balanceEnq(){
@@ -26,9 +30,18 @@ void Account :: deposit(){
 	balance = balance + depoAmt;
 }
 
+void Account :: setAccTypeS(){
+	strcpy(accType,"Savings");
+}
+
+void Account :: setAccTypeC(){
+	strcpy(accType,"Current");
+}
+
 void Account :: getAcc(){
 	std::cout<<"Account No.: "<<accNo<<std::endl;
-	std::cout<<"Account Name: "<<accName<<std::endl;
+	std::cout<<"Account Holder Name: "<<accName<<std::endl;
+	std::cout<<"Account Type: "<<accType<<std::endl;
 	std::cout<<"Balance:"<<balance<<std::endl;
 }
 
